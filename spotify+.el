@@ -281,12 +281,14 @@ Also sets a new `spotify+--token-refresher'."
 
 ;;;; Interactive commands
 
+;;;###autoload
 (defun spotify+-start ()
   "Perform authorization and obtain an access token."
   (interactive)
   (httpd-start)
   (spotify+--login))
 
+;;;###autoload
 (defun spotify+-next ()
   "Go to the next song."
   (interactive)
@@ -298,6 +300,7 @@ Also sets a new `spotify+--token-refresher'."
                               (spotify+--token-get))
     (error "Login with Spotify using M-x spotify+-start <RET>")))
 
+;;;###autoload
 (defun spotify+-prev ()
   "Go to the previous song."
   (interactive)
@@ -309,6 +312,7 @@ Also sets a new `spotify+--token-refresher'."
                               (spotify+--token-get))
     (error "Login with Spotify using M-x spotify+-start <RET>")))
 
+;;;###autoload
 (defun spotify+-play ()
   "Play the current song."
   (interactive)
@@ -320,6 +324,7 @@ Also sets a new `spotify+--token-refresher'."
                               (spotify+--token-get))
     (error "Login with Spotify using M-x spotify+-start <RET>")))
 
+;;;###autoload
 (defun spotify+-pause ()
   "Pause the current song."
   (interactive)
