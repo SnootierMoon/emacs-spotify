@@ -1,0 +1,38 @@
+* Emacs Spotify Plus
+
+Spotify Plus allows you to control Spotify from within Emacs.
+Although other Spotify plugins exist, this is the only one to use the PKCE OAuth2 flow, which provides much more security and is built for plugins like these.
+
+For now, this plugin allows you to play the next/previous song, and play/pause on the current device. However, it may soon have features such as displaying, modifying, and searching for data in buffers.
+
+** Getting Started
+
+*** Logging in to Spotify
+
+- Login to Spotify with =M-x spotify+-start <RET>=.
+
+*** Controlling Spotify
+
+- Play the current song with =M-x spotify+-play <RET>=.
+- Pause the current song with =M-x spotify+-pause <RET>=.
+- Play the next song with =M-x spotify+-next <RET>=.
+- Play the previous song with =M-x spotify+-prev <RET>=.
+
+** Information
+
+This plugin uses OAuth2 to access your Spotify information.
+OAuth2 is a tool that allows programs to access some of your accounts, such as Github, Google and Spotify. It is used to create the "Login with ..." pages.
+
+Although other Spotify plugins exist, they use OAuth2 flows that require client IDs and secrets which are a unique identifier and password for applications that use the Spotify API.
+As it says in the name, the client secret and should not be distributed from the application to the users.
+
+This means they often require the user to make their own Spotify Application in [[https://developer.spotify.com/dashboard/applications][Spotify' Website]] to obtain their own ID and secret, which can be tedious, and is ultimately pointless because of PKCE.
+Some Spotify plugins give out their client secret, but this is a big security risk that could threaten the Spotify Application which the plugin depends on, and it is therefore bad practice to do so.
+
+The [[https://www.oauth.com/oauth2-servers/pkce/][PKCE]] OAuth2 flow is designed for Applications like these, where credentials must be stored on the user's device rather than in a server, like in an Emacs plugin.
+Unlike other flows, the PKCE flow only requires the public client ID.
+The user must Login with Spotify using their own account in order to obtain an access token to use the API.
+This means:
+- Users don't have to make Spotify Applications in [[https://developer.spotify.com/dashboard/applications][Spotify' Website]]. They need to only Login With Spotify, whenever they want to connect and they obtain unique access tokens to use the Spotify API for that session, which is MUCH easier, and is the intended use of the flow.
+- Users are responsible for their own requests, rather than all users collectively having the same access token. There are no security vulnerabilities from exposed client secrets.
+

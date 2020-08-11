@@ -1,4 +1,4 @@
-;;; spotify+.el --- Control Spotify from Emacs -*- lexical-binding: t -*-
+;;; spotify+.el --- Control Spotify -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2020 Akshay Trivedi
 
@@ -6,8 +6,8 @@
 ;; Maintainer: Akshay Trivedi <aku24.7x3@gmail.com>
 ;; Version: 0.0.1
 ;; Created: 9 Aug 2020
-;; Keywords: games, hypermedia
-;; Package-Requires: ((emacs "25.1"))
+;; Keywords: hypermedia
+;; Package-Requires: ((emacs "25.1") (simple-httpd "1.5.1"))
 ;; Homepage: https://github.com/SnootierMoon/emacs-spotify-plus
 
 ;; This file is not part of GNU Emacs.
@@ -28,30 +28,7 @@
 ;;; Commentary:
 
 ;; Spotify plugin using the PKCE Oauth2 flow (in early development).
-;; For now, this plugin allows you to play the next/previous song, and
-;; play/pause on the current device.
-
-;; Other spotify plugins use Oauth2 flows that require client IDs and secrets
-;; which are unique identifier/password for applications that use the Spotify
-;; API, and should not be distributed from the application/plugin to the user.
-;;hThis means they often require the user to make their own Spotify Application
-;; at <https://developer.spotify.com/dashboard/applications> to obtain their own
-;; ID and secret, which can be tedious, and is ultimately pointless.  Some
-;; Spotify plugins give out their client secret, which is a big security risk
-;; that could threaten the Spotify Application which the plugin depends on, and
-;; it is therefore bad practice to do so.
-
-;; The PKCE flow is designed for Applications like these, where credentials must
-;; be stored on the user's device (most applications have a server running to
-;; handle authorization and secrets). Unlike other flows, the PKCE flow only
-;; requires the public client ID.  The user must Login with Spotify using their
-;; own account in order to obtain an access token to use the API.  This means:
-;;  - Users don't have to create Spotify Applications on developer.spotify.com.
-;;    They need to only Login With Spotify, whenever they want to connect and
-;;    they obtain unique access tokens to use the Spotify API for that session,
-;;    which is MUCH easier, and is the intended use of the flow.
-;;  - Users are responsible for their own requests, rather than all users
-;;    collectively having the same access token.
+;; See README.org for more information.
 
 ;;; Code:
 
