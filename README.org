@@ -5,8 +5,6 @@ This plugin uses the PKCE OAuth2 flow, which provides more security and is built
 
 For now, this plugin allows you to play the next/previous song, and play/pause on the current device. However, it may soon have features such as displaying, modifying, and searching for data in buffers.
 
-Update: I lost the motivation to continue after finding out that the Spotify web API does not support clearing the playback queue, setting the queue to an album, and setting it to a playlist which are all features of the app. The only thing Spotify supports is adding a track to the queue.
-
 ** Getting Started
 
 *** Logging in to Spotify
