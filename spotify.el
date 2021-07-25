@@ -154,7 +154,7 @@ ARGS is a plist that can have :method, :data, :headers, and :params
                   (lambda (_)
 		    (let ((data (buffer-substring (1+ (eval 'url-http-end-of-headers)) (point-max))))
 		      (spotify--log "Got response from %s: %s" endpoint data)
-		      (funcall callback data)))
+		      (when callback (funcall callback data))))
                   nil t)))
 
 (defmacro with-access-token (&rest body)
@@ -304,6 +304,8 @@ Starts an HTTP Server and starts the PKCE authorization flow."
 			  #'ignore
 			  :method "PUT"
 			  :headers spotify--access-token)))
+
+
 
 (provide 'spotify)
 ;;; spotify.el ends here

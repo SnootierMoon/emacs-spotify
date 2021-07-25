@@ -1,6 +1,6 @@
-* Emacs Spotify Plus
+* Emacs Spotify
 
-Spotify Plus allows you to control Spotify from within Emacs.
+This package allows you to control Spotify from within Emacs.
 
 ** Getting Started
 
@@ -15,11 +15,11 @@ Spotify Plus allows you to control Spotify from within Emacs.
 
 *** Logging in to Spotify
 
-- Login to Spotify with =M-x spotify+-start <RET>=.
+- Login to Spotify with =M-x spotify-start <RET>=.
 
-*** Controlling Spotify
+*** Controlling The Playback
 
-- Play the current song with =M-x spotify+-play <RET>=.
-- Pause the current song with =M-x spotify+-pause <RET>=.
-- Play the next song with =M-x spotify+-next <RET>=.
-- Play the previous song with =M-x spotify+-prev <RET>=.
+- Play the current song with =M-x spotify-play <RET>=.
+- Pause the current song with =M-x spotify-pause <RET>=.
+- Play the next song with =M-x spotify-next <RET>=.
+- Play the previous song with =M-x spotify-prev <RET>=.
