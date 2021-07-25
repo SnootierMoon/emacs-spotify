@@ -1,15 +1,17 @@
 * Emacs Spotify Plus
 
 Spotify Plus allows you to control Spotify from within Emacs.
-This plugin uses the PKCE OAuth2 flow, which provides more security and is built for serverless plugins like these.
-
-For now, this plugin allows you to play the next/previous song, and play/pause on the current device. However, it may soon have features such as displaying, modifying, and searching for data in buffers.
-
-** Archived
-
-This is an old version of the package. See the [[https://github.com/SnootierMoon/emacs-spotify][new version]].
 
 ** Getting Started
+
+*** Loading with [[https://github.com/raxod502/straight.el][straight.el]] & [[https://github.com/jwiegley/use-package][use-package]]
+
+#+begin_src emacs-lisp
+(use-package spotify
+  :straight (:type git :host github :repo "SnootierMoon/emacs-spotify"))
+#+end_src
+
+** Usage
 
 *** Logging in to Spotify
 
