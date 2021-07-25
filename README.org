@@ -5,6 +5,10 @@ This plugin uses the PKCE OAuth2 flow, which provides more security and is built
 
 For now, this plugin allows you to play the next/previous song, and play/pause on the current device. However, it may soon have features such as displaying, modifying, and searching for data in buffers.
 
+** Archived
+
+This is an old version of the package. See the [new version](https://github.com/SnootierMoon/emacs-spotify).
+
 ** Getting Started
 
 *** Logging in to Spotify
