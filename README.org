@@ -7,7 +7,7 @@ For now, this plugin allows you to play the next/previous song, and play/pause o
 
 ** Archived
 
-This is an old version of the package. See the [new version](https://github.com/SnootierMoon/emacs-spotify).
+This is an old version of the package. See the [[https://github.com/SnootierMoon/emacs-spotify][new version]].
 
 ** Getting Started
 
