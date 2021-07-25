@@ -57,6 +57,11 @@
   "Spotify Customization Group."
   :group 'applications)
 
+(defcustom spotify-keymap-prefix "M-s"
+  "The prefix for Spotify keybindings."
+  :group 'spotify
+  :type 'string)
+
 (defcustom spotify-enable-logging t
   "Non-nil if Spotify should log messages in the Spotify Log Buffer."
   :group 'spotify
@@ -98,6 +103,33 @@ The string should be compatible with `format-time-string'."
 
 (defvar spotify--token-refresher nil
   "The timer that periodically refreshes `spotify--access-token'.")
+
+(defvar spotify--keymap
+  (let ((map (make-keymap)))
+    (define-key map (kbd "g") #'spotify-play)
+    (define-key map (kbd "G") #'spotify-pause)
+    (define-key map (kbd "f") #'spotify-next)
+    (define-key map (kbd "n") #'spotify-next)
+    (define-key map (kbd "b") #'spotify-prev)
+    (define-key map (kbd "p") #'spotify-prev)
+    map)
+  "Spotify keymap.
+
+Gets bound to `spotify--keymap-prefix' when `spotify-mode' is enabled.")
+
+(define-minor-mode spotify-mode
+  "Toggle the Spotify minor mode.
+
+Enable Spotify keybindings."
+  :group 'spotify
+  :global t
+  :keymap (make-sparse-keymap)
+  (spotify--init-keymap))
+
+(defun spotify--init-keymap ()
+  "Reset the Spotify keymap."
+  (setq spotify-mode-map (make-sparse-keymap))
+  (define-key spotify-mode-map (kbd spotify-keymap-prefix) spotify--keymap))
 
 ;;;; Utility Functions
 
@@ -255,7 +287,8 @@ Starts an HTTP Server and starts the PKCE authorization flow."
   (interactive)
   (unless (httpd-running-p)
     (httpd-start))
-  (spotify--login))
+  (spotify--login)
+  (spotify-mode))
 
 ;;;###autoload
 (defun spotify-stop ()
@@ -304,8 +337,6 @@ Starts an HTTP Server and starts the PKCE authorization flow."
 			  #'ignore
 			  :method "PUT"
 			  :headers spotify--access-token)))
-
-
 
 (provide 'spotify)
 ;;; spotify.el ends here
