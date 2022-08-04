@@ -274,7 +274,14 @@ ARGS is a plist that can have :method, :data, :headers, and :params
   (cond ((not (string= state (alist-get 'state spotify--challenge)))
          (insert "Invalid state. Try logging in with Spotify again."))
         (error (insert "Error: " error))
-        (t (insert "Success. You may return to Emacs. Check the logs if you have any issues.")
+        (t (insert
+	    "<html>"
+	    "<script>window.close()</script>"
+	    "<body>"
+	    "<p>Sucess. You may now return to Emacs. Check the logs if you have any issues.</p>"
+	    "<button class=\"closeButton\" style=\"cursor: pointer\" onclick=\"window.close();\">Close Window</button>"
+	    "</body>"
+	    "</html>")
 	   (spotify--token-request code))))
 
 ;;;; Interactive Functions
