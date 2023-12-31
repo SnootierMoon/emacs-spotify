@@ -4,22 +4,50 @@ This package allows you to control Spotify from within Emacs.
 
 ** Getting Started
 
-*** Loading with [[https://github.com/raxod502/straight.el][straight.el]] & [[https://github.com/jwiegley/use-package][use-package]]
+This package works out-of-the-box once it's installed.
+
+*** Installing with use-package and vc-use-package
+
+The [[https://github.com/jwiegley/use-package/][use-package]] and [[https://github.com/slotThe/vc-use-package][vc-use-package]] packages come preinstalled on
+Emacs 30.
 
 #+begin_src emacs-lisp
 (use-package spotify
-  :straight (:type git :host github :repo "SnootierMoon/emacs-spotify"))
+  :vc (emacs-spotify
+       :url "https://github.com/SnootierMoon/emacs-spotify"))
 #+end_src
 
 ** Usage
 
 *** Logging in to Spotify
 
-- Login to Spotify with =M-x spotify-start <RET>=.
+- Login to Spotify with ~M-x spotify-start <RET>~.
 
-*** Controlling The Playback
+*** Controlling The Player
 
-- Play the current song with =M-x spotify-play <RET>=.
-- Pause the current song with =M-x spotify-pause <RET>=.
-- Play the next song with =M-x spotify-next <RET>=.
-- Play the previous song with =M-x spotify-prev <RET>=.
+- Play the current song with ~M-x spotify-play <RET>~.
+- Pause the current song with ~M-x spotify-pause <RET>~.
+- Play the next song with ~M-x spotify-next <RET>~.
+- Play the previous song with ~M-x spotify-prev <RET>~.
+
+** Privacy Disclaimer
+
+Spotify API requests made through this package will use my own SDA
+(Spotify developer application) by default, called "Emacs Spotify". In
+the Spotify Developer Dashboard, I can view general analytics
+including the number of daily users and the regions of the world where
+my SDA is most popular. However, (as far as I know) I cannot view
+individual user information, and this package does not collect any
+individual information as you use it (the source code is small enough
+that you can verify this yourself).
+
+** Changelog
+
+ - v0.0.1
+   - implement ~spotify-start~, ~spotify-stop~, ~spotify-play~,
+     ~spotify-pause~, ~spotify-next~, and ~spotify-prev~
+
+** License
+
+GPL v3
+
