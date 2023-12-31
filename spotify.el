@@ -539,6 +539,7 @@ For more information, see:
 
 ;;;; Interactive Commands
 
+;;;###autoload
 (defun start-spotify ()
   "Start Emacs Spotify."
   (interactive)
