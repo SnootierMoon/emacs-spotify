@@ -43,6 +43,13 @@
   "Options for configuring the Emacs Spotify plugin."
   :group 'applications)
 
+(defcustom spotify-keymap-prefix "M-s"
+  "The prefix key for all Emacs Spotify key bindings.
+
+Set to nil to disable the default Emacs Spotify keymaps."
+  :type 'key
+  :group 'spotify)
+
 (defgroup spotify-log nil
   "Options for configuring the logging system."
   :group 'spotify)
@@ -212,6 +219,48 @@ For more information, see:
   "Timer for refreshing `spotify--access-token'.
 
 Runs on a periodic interval determined by `spotify-token-refresher-interval'.")
+
+;;;; Minor Mode
+
+(defvar spotify--keymap
+  (let ((map (make-keymap)))
+    (keymap-set map "g" #'spotify-play)
+    (keymap-set map "G" #'spotify-pause)
+    (keymap-set map "f" #'spotify-next)
+    (keymap-set map "n" #'spotify-next)
+    (keymap-set map "b" #'spotify-prev)
+    (keymap-set map "p" #'spotify-prev)
+    map)
+  "Emacs Spotify keymap.
+
+Gets bound to `spotify-keymap-prefix' when `spotify-mode' is
+enabled.")
+
+(defun spotify--generate-mode-map ()
+  "Create the `spotify-mode-map' based on the user's preferences."
+  (let ((map (make-sparse-keymap)))
+    (when spotify-keymap-prefix
+      (keymap-set map
+                  spotify-keymap-prefix
+                  spotify--keymap)
+      map)))
+
+(define-minor-mode spotify-mode
+  "Toggle the Emacs Spotify minor mode.
+
+Enable the key bindings in `spotify--keymap'."
+  :global t
+  :keymap (spotify--generate-mode-map)
+  :interactive nil
+  :group 'spotify
+  (when spotify-mode
+    (spotify--refresh-mode-map)))
+
+(defun spotify--refresh-mode-map ()
+  "Update the value of `spotify-mode-map' based on the user's preferences."
+  (setq spotify-mode-map (spotify--generate-mode-map))
+  (when-let ((it (assq 'spotify-mode minor-mode-map-alist)))
+    (setcdr it spotify-mode-map)))
 
 ;;;; Utility Functions
 
@@ -538,7 +587,8 @@ Throws error or returns non-nil on failure."
       (spotify--log "Starting Emacs Spotify...\n")
       (setq spotify--auth-status 'authorizing)
       (spotify--init-auth-redirect-process))
-    (spotify--login)))
+    (spotify--login))
+  (spotify-mode 1))
 
 ;;;###autoload
 (defun stop-spotify ()
@@ -550,7 +600,8 @@ Throws error or returns non-nil on failure."
   (setq spotify--access-token nil)
   (spotify--delete-auth-redirect-process)
   (setq spotify--auth-challenge nil)
-  (setq spotify--auth-status 'unauthorized))
+  (setq spotify--auth-status 'unauthorized)
+  (spotify-mode -1))
 
 
 ;;;###autoload
