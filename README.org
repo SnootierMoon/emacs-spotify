@@ -58,7 +58,7 @@ descriptions may be inaccurate or out-of date, please confirm for yourself):
    - search tracks/playlists, Spotify Connect (queue, playback)
    - [[https://github.com/abo-abo/swiper][Counsel/Ivy]] integration
    - MELPA
- - [[https://github.com/krisajenkins/helm-spotify][Helm Spotify]]
+ - [[https://github.com/krisajenkins/helm-spotify][krisajenkins/helm-spotify]]
    - D-Bus, AppleScript, Web API search (no login)
    - search track, play track/album, playback
    - [[https://github.com/emacs-helm/helm][Helm]] integration
@@ -72,7 +72,7 @@ descriptions may be inaccurate or out-of date, please confirm for yourself):
    - D-Bus
    - playback
    - MELPA
- - [[https://github.com/wandersoncferreira/helm-spotify-plus][Helm Spotify Plus]]
+ - [[https://github.com/wandersoncferreira/helm-spotify-plus][wandersoncferreira/helm-spotify-plus]]
    - D-Bus, AppleScript, Web API (SDA credentials provided)
    - search track, play track/album, playback
    - [[https://github.com/emacs-helm/helm][Helm]] integration
