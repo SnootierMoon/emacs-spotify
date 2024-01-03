@@ -95,13 +95,13 @@ descriptions may be inaccurate or out-of date, please confirm for yourself):
    token without me having to expose SDA credentials. For this reason, PKCE is
    the go-to OAuth method for open source applications. My plugin will also
    periodically refresh this access token automatically. However, when you
-   initially obtain an access token or if an access token expires (e.g. when you
-   enable my plugin or if your computer sleeps, preventing the token refresher
-   from functioning), then you must re-authorize the plugin. This entails opening
-   a "Login with Spotify" page in the browser, and clicking a button to authorize
-   the plugin. My plugin will open this page automatically for you in the browser
-   as-needed. However, some users may find it more convenient to just make their
-   own SDA to avoid this hassle.
+   initially obtain an access token (e.g. when you enable my plugin) or if an
+   access token expires (e.g. if your system sleeps), then you must authorize
+   the plugin again. This entails opening a "Login with Spotify" page in the
+   browser and clicking a button. My plugin will open this page automatically
+   for you in the browser as-needed, and this behavior is customizable to be
+   unobtrusive. However, some users may find it more convenient to just make
+   their own SDA and avoid this hassle.
 
 ** Changelog
 

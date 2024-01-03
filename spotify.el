@@ -4,7 +4,7 @@
 
 ;; Author: Akshay Trivedi <aku24.7x3@gmail.com>
 ;; Maintainer: Akshay Trivedi <aku24.7x3@gmail.com>
-;; Version: 0.0.2
+;; Version: 0.0.3
 ;; Created: 9 Aug 2020
 ;; Keywords: hypermedia
 ;; Package-Requires: ((emacs "29.1"))
