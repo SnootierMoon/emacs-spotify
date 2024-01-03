@@ -81,7 +81,7 @@ descriptions may be inaccurate or out-of date, please confirm for yourself):
  - Both D-Bus and AppleScript do not require an internet connection, and
    support playback features that the Web API only supports for Spotify Premium
    users (via [[https://support.spotify.com/us/article/spotify-connect][Spotify
-   Connect]). You cannot control the playback using the Web API without Spotify
+   Connect]]). You cannot control the playback using the Web API without Spotify
    Premium. Therefore, many users will probably prefer a plugin that supports
    D-Bus and AppleScript. Since I am personally not currently interested in using
    either of these, I might never implement them into Emacs Spotify myself.
