@@ -31,6 +31,16 @@ preinstalled on Emacs 30.
  - Play the next song with ~M-x spotify-next <RET>~.
  - Play the previous song with ~M-x spotify-prev <RET>~.
 
+** Privacy Disclaimer
+
+Spotify API requests made through this package will use my own SDA (Spotify
+developer application) by default, called "Emacs Spotify". In the Spotify
+Developer Dashboard, I can view general analytics including the number of daily
+users and the regions of the world where my SDA is most popular. However, (as far
+as I know) I cannot view individual user information, and this package does not
+collect any individual information as you use it (the source code is small enough
+that you can verify this yourself).
+
 ** Alternatives Comparison
 
 This plugin is a personal project that I work on for fun. There may be more
@@ -92,16 +102,6 @@ descriptions may be inaccurate or out-of date, please confirm for yourself):
    the plugin. My plugin will open this page automatically for you in the browser
    as-needed. However, some users may find it more convenient to just make their
    own SDA to avoid this hassle.
-
-** Privacy Disclaimer
-
-Spotify API requests made through this package will use my own SDA (Spotify
-developer application) by default, called "Emacs Spotify". In the Spotify
-Developer Dashboard, I can view general analytics including the number of daily
-users and the regions of the world where my SDA is most popular. However, (as far
-as I know) I cannot view individual user information, and this package does not
-collect any individual information as you use it (the source code is small enough
-that you can verify this yourself).
 
 ** Changelog
 
