@@ -4,13 +4,13 @@ This package allows you to control Spotify from within Emacs.
 
 ** Getting Started
 
-This package works out-of-the-box once it's installed.
+This package works out of the box once it's installed.
 
 *** Installing with use-package and vc-use-package
 
 The [[https://github.com/jwiegley/use-package][use-package]] and
-[[https://github.com/slotThe/vc-use-package][vc-use-package]] packages come
-preinstalled on Emacs 30.
+[[https://github.com/slotThe/vc-use-package][vc-use-package]] are
+built-in on Emacs 30.
 
 #+begin_src emacs-lisp
 (use-package spotify
@@ -26,26 +26,41 @@ preinstalled on Emacs 30.
 
 *** Controlling The Player
 
- - Play the current song with ~M-x spotify-play <RET>~.
- - Pause the current song with ~M-x spotify-pause <RET>~.
- - Play the next song with ~M-x spotify-next <RET>~.
- - Play the previous song with ~M-x spotify-prev <RET>~.
+~[SP]~ refers to the value of ~spotify-keymap-prefix~, which can be
+~nil~ if you would like to set up keymaps yourself.
+
+ - Play the current song with ~M-x spotify-play <RET>~ (~[SP] p p~).
+ - Pause the current song with ~M-x spotify-pause <RET>~ (~[SP] p P~).
+ - Play the next song with ~M-x spotify-next <RET>~ (~[SP] p f~).
+ - Play the previous song with ~M-x spotify-prev <RET>~ (~[SP] p b~).
+ - Control the volume with ~M-x spotify-volume <RET>~ (~[SP] p v~).
+
+#+BEGIN_COMMENT
+*** Search for Content
+
+ - Search for an album with ~M-x spotify-search-album <RET>~ (~[SP] s a~).
+ - Search for an artist with ~M-x spotify-search-artist <RET>~ (~[SP] s A~).
+ - Search for an playlist with ~M-x spotify-search-playlist <RET>~ (~[SP] s p~).
+ - Search for an track with ~M-x spotify-search-track <RET>~ (~[SP] s t~).
+#+END_COMMENT
 
 ** Privacy Disclaimer
 
-Spotify API requests made through this package will use my own SDA (Spotify
-developer application) by default, called "Emacs Spotify". In the Spotify
-Developer Dashboard, I can view general analytics including the number of daily
-users and the regions of the world where my SDA is most popular. However, (as far
-as I know) I cannot view individual user information, and this package does not
-collect any individual information as you use it (the source code is small enough
-that you can verify this yourself).
+Spotify API requests made through this package will use my own SDA
+(Spotify developer application) by default, called "Emacs Spotify". In
+the Spotify Developer Dashboard, I can view general analytics
+including the number of daily users and geographical regions where my
+SDA is being used. However, (as far as I know) I do not have access to
+individual user information, and this package does not collect any
+individual information when you use it (the source code is small
+enough that you can verify this yourself).
 
 ** Alternatives Comparison
 
-This plugin is a personal project that I work on for fun. There may be more
-practical alternatives if you're looking for a Spotify plugin (note that these
-descriptions may be inaccurate or out-of date, please confirm for yourself):
+This plugin is a personal project that I work on for fun. There may be
+more practical alternatives if you want a Spotify plugin (*note that
+the following descriptions may be inaccurate or out of date*, please
+confirm for yourself):
 
  - [[https://github.com/danielfm/smudge][danielfm/smudge]] 
    - D-Bus, AppleScript, Web API
@@ -78,30 +93,35 @@ descriptions may be inaccurate or out-of date, please confirm for yourself):
    - [[https://github.com/emacs-helm/helm][Helm]] integration
    - MELPA
 
- - Both D-Bus and AppleScript do not require an internet connection, and
-   support playback features that the Web API only supports for Spotify Premium
-   users (via [[https://support.spotify.com/us/article/spotify-connect][Spotify
-   Connect]]). You cannot control the playback using the Web API without Spotify
-   Premium. Therefore, many users will probably prefer a plugin that supports
-   D-Bus and AppleScript. Since I am personally not currently interested in using
-   either of these, I might never implement them into Emacs Spotify myself.
+ - Both D-Bus and AppleScript are local and do not require an internet
+   connection. Web API access for playback manipulatioin requires an
+   internet connection and Spotify Premium (in order to use
+   [[https://support.spotify.com/us/article/spotify-connect][Spotify
+   Connect]]). Therefore, many users will probably prefer a plugin
+   that supports D-Bus and AppleScript. Since I am not currently
+   interested in using either of these, I may never implement them
+   into this plugin myself.
 
-   Note that D-Bus is supported on Unix-based operating systems, and AppleScript
-   is supported on Darwin-based operating systems.
+   Note that D-Bus is supported on Unix-based operating systems, and
+   AppleScript is supported on Darwin-based operating systems.
 
- - For Web API usage, all of the plugins above provide SDA credentials in the
-   source code or require you to make your own SDA. My plugin instead uses PKCE
-   which works out-of-the-box and allows the user to obtain a temporary access
-   token without me having to expose SDA credentials. For this reason, PKCE is
-   the go-to OAuth method for open source applications. My plugin will also
-   periodically refresh this access token automatically. However, when you
-   initially obtain an access token (e.g. when you enable my plugin) or if an
-   access token expires (e.g. if your system sleeps), then you must authorize
-   the plugin again. This entails opening a "Login with Spotify" page in the
-   browser and clicking a button. My plugin will open this page automatically
-   for you in the browser as-needed, and this behavior is customizable to be
-   unobtrusive. However, some users may find it more convenient to just make
-   their own SDA and avoid this hassle.
+ - For Web API usage, all of the plugins listed above either provide
+   SDA credentials in the source code, or require you to create your
+   own SDA. Instead, my plugin uses PKCE, which works out of the box
+   and allows users to obtain temporary access tokens without me
+   having to expose SDA credentials. My plugin periodically refreshes
+   this access token automatically, but when you initially obtain this
+   token upon starting Emacs, or if the token somehow expires, you
+   will need to authorize the plugin again through a "Login with
+   Spotify" page. My plugin can open this page automatically for you
+   in the browser when needed, and this behavior is customizable to be
+   unobtrusive (can be disabled entirely). However, some users may
+   find it more convenient to just make their own SDA and avoid this
+   hassle. Note that newly created SDAs will be in "development mode"
+   which imposes some restrictions (not a problem for individual use),
+   but since my SDA was created before Spotify made this policy
+   change, my SDA is in "extended quota mode" and does not have these
+   restrictions.
 
 ** Changelog
 
